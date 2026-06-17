@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="page-title">
+
+    {{ folder.name }}
+
+</h1>
+
+<div class="folder-grid">
+
+    {% for child in children %}
+
+    <a
+        href="{% url 'folder_detail' child.id %}"
+        class="folder-item"
+    >
+
+        <div class="folder-icon">
+            📁
+        </div>
+
+        <span>
+
+            {{ child.name }}
+
+        </span>
+
+    </a>
+
+    {% endfor %}
+
+</div>
+
+<hr>
+
+<div class="gallery">
+
+    {% for file in files %}
+
+    <div class="gallery-card">
+
+        {% if file.image %}
+
+        <img
+            src="{{ file.image.url }}"
+            alt="{{ file.name }}"
+        >
+
+        {% endif %}
+
+        <p>
+
+            {{ file.name }}
+
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

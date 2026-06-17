@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ file.name }}</h1>
+
+<img
+    src="{{ file.image.url }}"
+    alt="{{ file.name }}"
+    style="
+        width:100%;
+        max-width:900px;
+        border-radius:12px;
+    "
+>
+
+<div style="margin-top:20px;">
+
+    <p>
+        {{ file.content }}
+    </p>
+
+</div>
+
+{% endblock %}

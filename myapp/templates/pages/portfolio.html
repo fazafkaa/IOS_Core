@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Branding</h1>
+
+<div class="gallery">
+
+    {% for file in files %}
+
+    <a
+        href="{% url 'project_detail' file.id %}"
+        class="gallery-card"
+    >
+
+        <img
+            src="{{ file.image.url }}"
+            alt="{{ file.name }}"
+        >
+
+        <p>{{ file.name }}</p>
+
+    </a>
+
+   

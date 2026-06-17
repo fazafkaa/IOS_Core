@@ -1,0 +1,359 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#ececec;
+
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.window{
+    width:95%;
+    height:92vh;
+
+    background:white;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+
+.title-bar{
+    height:60px;
+
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+
+    padding:0 20px;
+
+    background:#f5f5f7;
+
+    border-bottom:1px solid #ddd;
+}
+
+.traffic-lights{
+    display:flex;
+    gap:8px;
+}
+
+.traffic-lights span{
+    width:14px;
+    height:14px;
+    border-radius:50%;
+}
+
+.red{
+    background:#ff5f57;
+}
+
+.yellow{
+    background:#febc2e;
+}
+
+.green{
+    background:#28c840;
+}
+
+.workspace{
+    display:flex;
+    height:calc(100% - 60px);
+}
+
+.sidebar{
+    width:260px;
+
+    background:#f7f7f7;
+
+    border-right:1px solid #ddd;
+
+    padding:25px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.sidebar h4{
+    margin-bottom:10px;
+    margin-top:20px;
+
+    color:#888;
+    font-size:13px;
+}
+
+.sidebar h4:first-child{
+    margin-top:0;
+}
+
+/* .sidebar a{
+    text-decoration:none;
+
+    color:#222;
+
+    padding:10px 12px;
+
+    border-radius:8px;
+
+    margin-bottom:4px;
+
+    transition:.2s;
+} */
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    text-decoration:none;
+
+    color:#222;
+
+    padding:10px 12px;
+
+    border-radius:8px;
+
+    margin-bottom:4px;
+
+    transition:.2s;
+}
+
+.sidebar a:hover{
+    background:#e5e5e5;
+}
+
+.content{
+    flex:1;
+
+    padding:50px;
+
+    overflow:auto;
+}
+
+.welcome h1{
+    margin-bottom:15px;
+
+    font-size:42px;
+}
+
+.welcome p{
+    margin-bottom:10px;
+
+    color:#666;
+
+    font-size:18px;
+}
+
+.page-content{
+    max-width:900px;
+}
+
+.page-content h1{
+    margin-bottom:20px;
+}
+
+.page-content p{
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.page-content ul{
+    padding-left:20px;
+}
+
+.page-content li{
+    margin-bottom:10px;
+}
+
+.profile-photo{
+    width:350px;
+
+    border-radius:12px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+/* ===================== */
+/* PHOTO PAGE */
+/* ===================== */
+
+.profile-page{
+    display:flex;
+    gap:60px;
+    align-items:center;
+}
+
+.profile-image img{
+    width:280px;
+    height:280px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.12);
+}
+
+.profile-info h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.tagline{
+    color:#666;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.profile-description{
+    max-width:600px;
+}
+
+.profile-description p{
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+/* ===================== */
+/* PORTFOLIO FOLDER VIEW */
+/* ===================== */
+
+.page-title{
+    margin-bottom:40px;
+}
+
+.folder-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(180px,1fr));
+
+    gap:40px;
+}
+
+.folder-item{
+    text-decoration:none;
+    color:#222;
+
+    text-align:center;
+
+    padding:20px;
+
+    border-radius:14px;
+
+    transition:.2s;
+}
+
+.folder-item:hover{
+    background:#f3f3f3;
+}
+
+.folder-icon{
+    font-size:70px;
+    margin-bottom:10px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(250px,1fr));
+
+    gap:24px;
+}
+
+.gallery-card{
+    background:white;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.08);
+}
+
+.gallery-card img{
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.gallery-card p{
+    padding:15px;
+
+    text-align:center;
+
+    font-weight:500;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-card {
+    width: 260px;
+}
+
+.gallery-card img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.gallery-card p {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.gallery-card {
+    width: 260px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+
+    transition: .2s;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 180px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.gallery-card p {
+    padding: 12px;
+
+    text-align: center;
+
+    font-weight: 500;
+}
