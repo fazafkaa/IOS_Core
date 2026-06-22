@@ -127,3 +127,11 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+import os
+
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.vercel.app",
+]

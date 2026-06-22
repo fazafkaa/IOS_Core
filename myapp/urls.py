@@ -27,4 +27,15 @@ urlpatterns = [
         name="project_detail"
     ),
 
+    path("photo/", views.photo, name="photo"),
+    path("portfolio/", views.portfolio, name="portfolio"),
+    path("resume/", views.resume, name="resume"),
+    path("contact/", views.contact, name="contact"),
+
+    path(
+    "profile/",
+    views.profile,
+    name="profile"
+),
+
 ]

@@ -1,25 +1,60 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<div class="breadcrumb">
+  <a href="{% url 'finder' %}"> Home </a>
 
-<h1>{{ file.name }}</h1>
+  {% for crumb in breadcrumbs %}
 
-<img
-    src="{{ file.image.url }}"
-    alt="{{ file.name }}"
-    style="
-        width:100%;
-        max-width:900px;
-        border-radius:12px;
-    "
->
+  <span>/</span>
 
-<div style="margin-top:20px;">
+  <a href="{% url 'folder_detail' crumb.id %}"> {{ crumb.name }} </a>
 
-    <p>
-        {{ file.content }}
-    </p>
+  {% endfor %}
 
+  <span>/</span>
+
+  {{ file.name }}
 </div>
 
-{% endblock %}
+<h1 class="page-title">{{ file.name }}</h1>
+
+{% if file.file_type == "image" %}
+
+<img
+  src="{{ file.image.url }}"
+  alt="{{ file.name }}"
+  class="project-image"
+  id="lightbox-trigger"
+/>
+
+<div id="lightbox">
+  <span id="close-lightbox">✕</span>
+
+  <img src="{{ file.image.url }}" alt="{{ file.name }}" id="lightbox-image" />
+</div>
+
+{% elif file.file_type == "text" %}
+
+<div class="text-viewer">
+  <div class="text-viewer-header">📄 {{ file.name }}</div>
+
+  <pre>{{ file.content }}</pre>
+</div>
+
+{% elif file.file_type == "pdf" %}
+
+<div class="text-viewer">
+  <div class="text-viewer-header">📕 {{ file.name }}</div>
+
+  <div style="padding: 30px; text-align: center">
+    <div class="file-icon">📕</div>
+
+    <p>{{ file.name }}</p>
+
+    <br />
+
+    <a href="{{ file.pdf.url }}" target="_blank"> Open PDF </a>
+  </div>
+</div>
+
+{% endif %} {% endblock %}

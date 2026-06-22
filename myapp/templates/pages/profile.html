@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="profile-wrapper">
+  <img
+    src="{{ profile.photo.url }}"
+    alt="{{ profile.full_name }}"
+    class="profile-photo"
+  />
+
+  <h1>{{ profile.full_name }}</h1>
+
+  <h3>{{ profile.title }}</h3>
+
+  <hr />
+
+  <h2>About</h2>
+  <p>{{ profile.about }}</p>
+
+  <h2>Education</h2>
+  <p>{{ profile.education|linebreaks }}</p>
+
+  <h2>Skills</h2>
+  <p>{{ profile.skills|linebreaks }}</p>
+
+  <h2>Software</h2>
+  <p>{{ profile.software|linebreaks }}</p>
+</div>
+
+{% endblock %}

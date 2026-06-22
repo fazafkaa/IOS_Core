@@ -2,26 +2,22 @@
 
 {% block content %}
 
-<h1 class="page-title">
-    Home
-</h1>
+<h1 class="page-title">Home</h1>
 
-<div class="folder-grid">
+<div class="gallery">
 
     {% for folder in folders %}
 
-    <a
-        href="{% url 'folder_detail' folder.id %}"
-        class="folder-item"
-    >
+    <a href="{% url 'folder_detail' folder.id %}"
+       class="folder-card">
 
         <div class="folder-icon">
             📁
         </div>
 
-        <span>
+        <div class="folder-name">
             {{ folder.name }}
-        </span>
+        </div>
 
     </a>
 

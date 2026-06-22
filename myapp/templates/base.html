@@ -1,59 +1,51 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>fill.archive</title>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
 
-</head>
-
-<body>
-
-<div class="window">
-
-    <div class="title-bar">
-
+  <body>
+    <div class="window">
+      <div class="title-bar">
         <div class="traffic-lights">
-            <span class="red"></span>
-            <span class="yellow"></span>
-            <span class="green"></span>
+          <span class="red"></span>
+          <span class="yellow"></span>
+          <span class="green"></span>
         </div>
 
-        <div class="title">
-            fill.archive
-        </div>
+        <div class="title">fill.archive</div>
+      </div>
 
-    </div>
-
-    <div class="workspace">
-
+      <div class="workspace">
         <aside class="sidebar">
+          <h4>Navigation</h4>
 
-            <h4>Navigation</h4>
+          <a href="{% url 'finder' %}"> 🏠 Home </a>
 
-            <a href="{% url 'finder' %}">
-                🏠 Home
-            </a>
+          {% for folder in sidebar_folders %}
 
+          <a
+            href="{% url 'folder_detail' folder.id %}"
+            class="{% if current_folder and current_folder.id == folder.id %}active-folder{% endif %}"
+          >
+            📁 {{ folder.name }}
+          </a>
+
+          {% endfor %}
         </aside>
 
-        <main class="content">
-
-            {% block content %}
-            {% endblock %}
-
-        </main>
-
+        <main class="content">{% block content %} {% endblock %}</main>
+      </div>
     </div>
 
-</div>
+<script src="{% static 'js/script.js' %}"></script>
 
-</body>
+  </body>
 </html>

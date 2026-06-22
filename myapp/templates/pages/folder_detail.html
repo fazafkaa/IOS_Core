@@ -2,63 +2,100 @@
 
 {% block content %}
 
-<h1 class="page-title">
+<div class="breadcrumb">
 
-    {{ folder.name }}
-
-</h1>
-
-<div class="folder-grid">
-
-    {% for child in children %}
-
-    <a
-        href="{% url 'folder_detail' child.id %}"
-        class="folder-item"
-    >
-
-        <div class="folder-icon">
-            📁
-        </div>
-
-        <span>
-
-            {{ child.name }}
-
-        </span>
-
+    <a href="{% url 'finder' %}">
+        Home
     </a>
+
+    {% for crumb in breadcrumbs %}
+
+        <span>/</span>
+
+        <a href="{% url 'folder_detail' crumb.id %}">
+            {{ crumb.name }}
+        </a>
 
     {% endfor %}
 
 </div>
 
-<hr>
+<h2 class="page-title">
+    {{ folder.name }}
+</h2>
 
 <div class="gallery">
 
+    {% for child in children %}
+
+    <a href="{% url 'folder_detail' child.id %}"
+       class="folder-card">
+
+        <div class="folder-icon">
+            📁
+        </div>
+
+        <div class="folder-name">
+            {{ child.name }}
+        </div>
+
+    </a>
+
+    {% endfor %}
+
+
     {% for file in files %}
 
-    <div class="gallery-card">
+    <a href="{% url 'project_detail' file.id %}"
+       class="gallery-card">
 
-        {% if file.image %}
+        {% if file.file_type == "image" and file.image %}
 
-        <img
-            src="{{ file.image.url }}"
-            alt="{{ file.name }}"
-        >
+            <img src="{{ file.image.url }}"
+                 alt="{{ file.name }}">
+
+        {% elif file.file_type == "text" %}
+
+            <div class="file-icon">
+                📄
+            </div>
+
+        {% elif file.file_type == "pdf" %}
+
+            <div class="file-icon">
+                📕
+            </div>
+
+        {% else %}
+
+            <div class="file-icon">
+                📦
+            </div>
 
         {% endif %}
 
+        <p>{{ file.name }}</p>
+
+    </a>
+
+    {% endfor %}
+
+
+    {% if not children and not files %}
+
+    <div class="empty-folder">
+
+        <div class="empty-icon">
+            📂
+        </div>
+
         <p>
-
-            {{ file.name }}
-
+            No files available.
         </p>
 
     </div>
 
-    {% endfor %}
+    {% endif %}
 
 </div>
 
